@@ -18,10 +18,25 @@ function getCharacterSet() {
   return charset;
 }
 
+function scalePasswordFont() {
+  if (!passwordInput.value) {
+    passwordInput.style.fontSize = '';
+    return;
+  }
+  const minFontSize = 8;
+  let fontSize = 16;
+  passwordInput.style.fontSize = fontSize + 'px';
+  while (passwordInput.scrollWidth > passwordInput.clientWidth && fontSize > minFontSize) {
+    fontSize -= 1;
+    passwordInput.style.fontSize = fontSize + 'px';
+  }
+}
+
 function generatePassword() {
   const charset = getCharacterSet();
   if (!charset) {
     passwordInput.value = '';
+    passwordInput.style.fontSize = '';
     return;
   }
 
@@ -35,6 +50,7 @@ function generatePassword() {
   }
 
   passwordInput.value = password;
+  requestAnimationFrame(scalePasswordFont);
 }
 
 async function copyPassword() {
@@ -81,3 +97,7 @@ copyBtn.addEventListener('click', copyPassword);
 
 lengthValue.textContent = lengthSlider.value;
 generatePassword();
+
+window.addEventListener('resize', () => {
+  if (passwordInput.value) scalePasswordFont();
+});

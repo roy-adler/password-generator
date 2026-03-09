@@ -78,6 +78,7 @@ h1 {
   color: var(--text-primary);
   letter-spacing: 0.05em;
   height: 51px;
+  text-align: center;
 }
 
 .password-field::placeholder {
