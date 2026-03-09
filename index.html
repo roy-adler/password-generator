@@ -48,7 +48,7 @@
       <p class="subtitle">Create secure, random passwords instantly</p>
     </header>
 
-    <div class="password-display">
+    <div class="password-field-wrapper">
       <input 
         type="text" 
         class="password-field" 
@@ -57,10 +57,11 @@
         placeholder="Click Generate to create a password"
         aria-label="Generated password"
       >
-      <button class="btn btn-primary" id="generateBtn" type="button">Generate</button>
     </div>
-
-    <button class="btn btn-secondary btn-copy" id="copyBtn" type="button">Copy password</button>
+    <div class="button-row">
+      <button class="btn btn-primary" id="generateBtn" type="button">Generate</button>
+      <button class="btn btn-secondary btn-copy" id="copyBtn" type="button">Copy password</button>
+    </div>
 
     <div class="settings">
       <div class="setting-row">

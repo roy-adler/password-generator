@@ -45,7 +45,7 @@ body {
 
 @media (min-width: 768px) {
   .container {
-    max-width: 520px;
+    max-width: 640px;
   }
 }
 
@@ -63,22 +63,21 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-.password-display {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+.password-field-wrapper {
+  margin-bottom: 0.5rem;
 }
 
 .password-field {
-  flex: 1;
+  width: 100%;
   font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
-  padding: 0.875rem 1rem;
+  padding: 0 1rem;
   background: var(--bg-tertiary);
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text-primary);
   letter-spacing: 0.05em;
+  height: 51px;
 }
 
 .password-field::placeholder {
@@ -89,11 +88,13 @@ h1 {
   font-family: inherit;
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 0.875rem 1.25rem;
+  padding: 0 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s ease;
+  height: 51px;
+  flex-shrink: 0;
 }
 
 .btn-primary {
@@ -115,8 +116,19 @@ h1 {
   background: var(--border);
 }
 
+.button-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.button-row .btn {
+  flex: 1;
+  height: 51px;
+}
+
 .btn-copy {
-  min-width: 100px;
+  min-width: 80px;
 }
 
 .btn-copy.copied {
