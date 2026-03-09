@@ -26,17 +26,6 @@ docker run -p 8080:80 password-generator
 
 Then open [http://localhost:8080](http://localhost:8080) in your browser.
 
-### Without Docker
-
-You can also use the generator by serving the files locally. For example, with Python:
-
-```bash
-# Python 3
-python -m http.server 8000
-```
-
-Then open [http://localhost:8000](http://localhost:8000).
-
 ## Security
 
 - Passwords are generated entirely in your browser using the Web Crypto API

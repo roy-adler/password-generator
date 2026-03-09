@@ -1,4 +1,4 @@
-const CACHE_NAME = 'password-generator-v1';
+const CACHE_NAME = 'password-generator-v3';
 const ASSETS = [
   '/',
   '/index.html',
@@ -7,7 +7,8 @@ const ASSETS = [
   '/password_icon.svg',
   '/manifest.json',
   '/icon-192.png',
-  '/icon-512.png'
+  '/icon-512.png',
+  '/icon-maskable-512.png'
 ];
 
 self.addEventListener('install', (event) => {
