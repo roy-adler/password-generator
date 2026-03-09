@@ -3,7 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Password Generator</title>
+  <title>Free Online Password Generator | Create Secure Random Passwords</title>
+  <meta name="description" content="Generate strong, random passwords instantly. Free secure password generator with length control, uppercase, lowercase, numbers & symbols. No data stored. Create passwords in your browser.">
+  <meta name="keywords" content="password generator, secure password, random password, strong password, free password generator, online password generator">
+  <meta name="author" content="Password Generator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href=https://password-generator.royadler.de/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Online Password Generator | Create Secure Random Passwords">
+  <meta property="og:description" content="Generate strong, random passwords instantly. Free secure password generator with length control. No data stored.">
+  <meta property="og:url" content=https://password-generator.royadler.de/">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Online Password Generator">
+  <meta name="twitter:description" content="Generate strong, random passwords instantly. Free, secure, no data stored.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Password Generator",
+    "description": "Generate strong, random passwords instantly. Free secure password generator with customizable length and character options.",
+    "applicationCategory": "UtilitiesApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "browserRequirements": "Requires JavaScript. Works in modern browsers."
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -228,9 +259,11 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Password Generator</h1>
-    <p class="subtitle">Create secure, random passwords instantly</p>
+  <main class="container" role="main">
+    <header>
+      <h1>Password Generator</h1>
+      <p class="subtitle">Create secure, random passwords instantly</p>
+    </header>
 
     <div class="password-display">
       <input 
@@ -277,7 +310,7 @@
         </label>
       </div>
     </div>
-  </div>
+  </main>
 
   <script>
     const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
