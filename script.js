@@ -8,8 +8,6 @@ const generateBtn = document.getElementById('generateBtn');
 const copyBtn = document.getElementById('copyBtn');
 const lengthSlider = document.getElementById('lengthSlider');
 const lengthValue = document.getElementById('lengthValue');
-const strengthFill = document.getElementById('strengthFill');
-const strengthLabel = document.getElementById('strengthLabel');
 
 function getCharacterSet() {
   let charset = '';
@@ -24,7 +22,6 @@ function generatePassword() {
   const charset = getCharacterSet();
   if (!charset) {
     passwordInput.value = '';
-    updateStrength('');
     return;
   }
 
@@ -38,33 +35,6 @@ function generatePassword() {
   }
 
   passwordInput.value = password;
-  updateStrength(password);
-}
-
-function calculateStrength(password) {
-  if (!password) return { score: 0, label: '—' };
-
-  let entropy = 0;
-  let charsetSize = 0;
-  if (/[a-z]/.test(password)) charsetSize += 26;
-  if (/[A-Z]/.test(password)) charsetSize += 26;
-  if (/[0-9]/.test(password)) charsetSize += 10;
-  if (/[^a-zA-Z0-9]/.test(password)) charsetSize += 32;
-  if (charsetSize === 0) charsetSize = 1;
-
-  entropy = password.length * Math.log2(charsetSize);
-
-  if (entropy < 28) return { score: 0.33, label: 'Weak' };
-  if (entropy < 44) return { score: 0.66, label: 'Average' };
-  return { score: 1, label: 'Strong' };
-}
-
-function updateStrength(password) {
-  const { score, label } = calculateStrength(password);
-  strengthFill.style.width = `${score * 100}%`;
-  strengthFill.className = 'strength-fill ' +
-    (score < 0.5 ? 'weak' : score < 0.85 ? 'average' : 'strong');
-  strengthLabel.textContent = label;
 }
 
 async function copyPassword() {

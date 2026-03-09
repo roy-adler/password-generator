@@ -10,9 +10,6 @@
   --success: #3fb950;
   --warning: #d29922;
   --danger: #f85149;
-  --weak: #f85149;
-  --average: #d29922;
-  --strong: #3fb950;
 }
 
 * {
@@ -122,34 +119,11 @@ h1 {
   border-color: var(--success);
 }
 
-.strength-bar {
-  height: 4px;
-  background: var(--bg-tertiary);
-  border-radius: 2px;
-  margin-bottom: 0.5rem;
-  overflow: hidden;
-}
-
-.strength-fill {
-  height: 100%;
-  border-radius: 2px;
-  transition: width 0.3s ease, background 0.3s ease;
-}
-
-.strength-fill.weak { background: var(--weak); }
-.strength-fill.average { background: var(--average); }
-.strength-fill.strong { background: var(--strong); }
-
-.strength-label {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.25rem;
-}
-
 .settings {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .setting-row {
