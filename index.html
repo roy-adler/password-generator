@@ -10,6 +10,8 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://password-generator.royadler.de/">
   <link rel="icon" href="password_icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#58a6ff">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -96,5 +98,10 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
 </body>
 </html>
