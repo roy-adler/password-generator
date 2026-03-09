@@ -1,5 +1,7 @@
 # Password Generator
 
+[View on GitHub](https://github.com/roy-adler/password-generator)
+
 A secure, browser-based password generator that runs in Docker—inspired by the [LastPass password generator](https://www.lastpass.com/de/features/password-generator).
 
 ## Features
