@@ -8,6 +8,8 @@ const generateBtn = document.getElementById('generateBtn');
 const copyBtn = document.getElementById('copyBtn');
 const lengthSlider = document.getElementById('lengthSlider');
 const lengthValue = document.getElementById('lengthValue');
+const curlCommandEl = document.getElementById('curlCommand');
+const copyCurlBtn = document.getElementById('copyCurlBtn');
 function parseBooleanParam(value, defaultValue) {
   if (value === null) return defaultValue;
   const normalized = value.trim().toLowerCase();
@@ -64,6 +66,49 @@ function writeSettingsToUrl() {
   const nextSearch = params.toString();
   const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ''}${window.location.hash}`;
   window.history.replaceState({}, '', nextUrl);
+  updateCurlCommand();
+}
+
+function buildApiUrl(pathname) {
+  const params = new URLSearchParams();
+  const settings = getSettingsFromUi();
+  params.set('length', String(settings.length));
+  params.set('uppercase', settings.uppercase ? '1' : '0');
+  params.set('lowercase', settings.lowercase ? '1' : '0');
+  params.set('numbers', settings.numbers ? '1' : '0');
+  params.set('symbols', settings.symbols ? '1' : '0');
+  return `${window.location.origin}${pathname}?${params.toString()}`;
+}
+
+function updateCurlCommand() {
+  if (!curlCommandEl) return;
+  const apiUrl = buildApiUrl('/api/password.txt');
+  curlCommandEl.textContent = `curl "${apiUrl}"`;
+}
+
+async function copyCurlCommand() {
+  if (!curlCommandEl || !copyCurlBtn) return;
+  const text = curlCommandEl.textContent || '';
+  if (!text) return;
+
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(curlCommandEl);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand('copy');
+    selection.removeAllRanges();
+  }
+
+  copyCurlBtn.textContent = 'Copied!';
+  copyCurlBtn.classList.add('copied');
+  setTimeout(() => {
+    copyCurlBtn.textContent = 'Copy command';
+    copyCurlBtn.classList.remove('copied');
+  }, 2000);
 }
 
 function getCharacterSet() {
@@ -153,8 +198,10 @@ lengthSlider.addEventListener('input', () => {
 
 generateBtn.addEventListener('click', generatePassword);
 copyBtn.addEventListener('click', copyPassword);
+copyCurlBtn.addEventListener('click', copyCurlCommand);
 
 applySettingsToUi(readSettingsFromUrl());
+updateCurlCommand();
 generatePassword();
 
 window.addEventListener('resize', () => {
