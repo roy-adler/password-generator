@@ -73,7 +73,7 @@ function securityHeaders() {
   };
 }
 
-function handleApiPassword(req, res, url) {
+function handleApiPassword(req, res, url, forcedFormat) {
   const length = parseLength(url.searchParams.get('length'), 12);
   const options = {
     uppercase: parseBooleanParam(url.searchParams.get('uppercase'), true),
@@ -99,7 +99,7 @@ function handleApiPassword(req, res, url) {
   }
 
   const password = generatePassword(length, charset);
-  const format = (url.searchParams.get('format') || 'json').toLowerCase();
+  const format = (forcedFormat || url.searchParams.get('format') || 'json').toLowerCase();
   if (format === 'text') {
     sendText(res, 200, `${password}\n`);
     return;
@@ -164,6 +164,11 @@ const server = http.createServer((req, res) => {
 
   if (url.pathname === '/api/password') {
     handleApiPassword(req, res, url);
+    return;
+  }
+
+  if (url.pathname === '/api/password.txt') {
+    handleApiPassword(req, res, url, 'text');
     return;
   }
 

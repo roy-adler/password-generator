@@ -41,6 +41,12 @@ Generate as plain text (easy for scripts):
 curl "http://localhost:8080/api/password?length=20&symbols=0&format=text"
 ```
 
+Or use the plain-text endpoint directly:
+
+```bash
+curl "http://localhost:8080/api/password.txt?length=20&symbols=0"
+```
+
 ### Query Parameters
 
 - `length` — integer from `8` to `64` (default `12`)
