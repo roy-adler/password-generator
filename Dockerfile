@@ -6,18 +6,12 @@ RUN magick password_icon.svg -background none -resize 192x192 icon-192.png && \
     magick password_icon.svg -background none -resize 512x512 icon-512.png && \
     magick password_icon.svg -background none -resize 410x410 -gravity center -extent 512x512 icon-maskable-512.png
 
-FROM nginx:alpine
+FROM node:20-alpine
+WORKDIR /app
 
-# Remove default nginx config
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy static files
-COPY index.html password_icon.svg script.js styles.css manifest.json sw.js /usr/share/nginx/html/
-COPY --from=iconbuilder /icons/icon-192.png /icons/icon-512.png /icons/icon-maskable-512.png /usr/share/nginx/html/
+COPY package.json server.js index.html password_icon.svg script.js styles.css manifest.json sw.js ./
+COPY --from=iconbuilder /icons/icon-192.png /icons/icon-512.png /icons/icon-maskable-512.png ./
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
