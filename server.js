@@ -10,7 +10,7 @@ const ROOT = __dirname;
 const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
 const NUMBERS = '0123456789';
-const SYMBOLS = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+const SYMBOLS = '!@#$%^&*()-_=+[]{}:,.?';
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
